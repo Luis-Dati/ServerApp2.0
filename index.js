@@ -29,27 +29,27 @@ var mysql = require('mysql2');
 //   queueLimit: 0
 // });
 
-// var pool = mysql.createPool({
-//   host: "bs2yku6jwgpoppvqen9o-mysql.services.clever-cloud.com",
-//   user: "uo48jts4vghyypfz",
-//   password: "kFdkE08AHZjeDAewwgF6",
-//   database: "bs2yku6jwgpoppvqen9o",
-//   port: 3306,
-//   connectionLimit: 20,
-//   waitForConnections: true,
-//   queueLimit: 0
-// });
-
 var pool = mysql.createPool({
-  host: "202.92.4.11",
-  user: "xwtvuluchosting_qld",
-  password: "Dat@123!DT",
-  database: "xwtvuluchosting_qld",
+  host: "bs2yku6jwgpoppvqen9o-mysql.services.clever-cloud.com",
+  user: "uo48jts4vghyypfz",
+  password: "kFdkE08AHZjeDAewwgF6",
+  database: "bs2yku6jwgpoppvqen9o",
   port: 3306,
   connectionLimit: 20,
   waitForConnections: true,
   queueLimit: 0
 });
+
+// var pool = mysql.createPool({
+//   host: "202.92.4.11",
+//   user: "xwtvuluchosting_qld",
+//   password: "Dat@123!DT",
+//   database: "xwtvuluchosting_qld",
+//   port: 3306,
+//   connectionLimit: 20,
+//   waitForConnections: true,
+//   queueLimit: 0
+// });
 
 app.listen(3000, () => console.log('Node server running @ http://localhost:3000'));
 
