@@ -3,7 +3,7 @@ const router = express.Router();
 const { pool } = require("../db/db-config.js");
 
 //get all day all class
-router.get('/statisticOnDay', (req, res) => {
+router.get('/statisticOnDay/:week_id', (req, res) => {
   pool.getConnection(function(err, conn) {
     if (err) {console.log(err)}
 
@@ -20,7 +20,7 @@ router.get('/statisticOnDay', (req, res) => {
 });
 
 //get all day one class
-router.get('/statisticOnDay/:class_id', (req, res) => {
+router.get('/statisticOnDay/:week_id/:class_id', (req, res) => {
   pool.getConnection(function(err, conn) {
     if (err) {console.log(err)}
 
