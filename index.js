@@ -33,6 +33,7 @@ const feedback = require('./routes/feedback.js');
 const lichtruc = require('./routes/lichtruc.js');
 const score = require('./routes/score.js');
 const vipham = require('./routes/vipham.js');
+const statisticOnDay = require('./routes/statisticOnDay.js');
 
 //use Route
 app.use(users);
@@ -43,6 +44,7 @@ app.use(feedback);
 app.use(lichtruc);
 app.use(score);
 app.use(vipham);
+app.use(statisticOnDay);
 
 // const schedule = require('node-schedule')
 console.log(new Date("2023-07-30T00:00:00Z"))
