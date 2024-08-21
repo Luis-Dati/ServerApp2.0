@@ -9,7 +9,7 @@ router.get('/week', (req, res) => {
       console.log(err)
     }
 
-    conn.query('select * from Week', (err, result) => {
+    conn.query('Select * From Week', (err, result) => {
       if (err) {
         console.log(err)
         return
@@ -19,6 +19,24 @@ router.get('/week', (req, res) => {
 
     pool.releaseConnection(conn);
   })
+});
+
+router.post('/week', (req, res) => {
+  pool.getConnection((err, conn) => {
+    if (err) { console.log(err) }
+
+    const params = req.body;
+
+    conn.query('INSERT INTO Week SET ?', params, (err, result) => {
+
+      if (!err) {
+        res.send("Inserted item!")
+      } else { console.log(err); }
+
+    });
+    pool.releaseConnection(conn)
+  })
+
 });
 
 //update one
