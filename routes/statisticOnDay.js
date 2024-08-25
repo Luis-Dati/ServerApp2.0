@@ -87,4 +87,36 @@ router.post('/statisticOnDay', (req, res) => {
 
 });
 
+router.put('/statisticOnDay', (req, res) => {
+  pool.getConnection((err, conn) => {
+    if (err) { console.log(err) }
+
+    const { week_id, class_id, day, quantity, change } = req.body;
+
+    if(change === 'inc'){
+      //update name column
+      conn.query('UPDATE StatisticOnDay SET quantity = quantity + 1 WHERE week_id = ? and class_id = ? and day = ?', [quantity, week_id, class_id, day], (err, result) => {
+
+        if (!err) {
+          res.send("Changed item!")
+        } else { console.log(err); }
+
+      });
+
+      pool.releaseConnection(conn)      
+    } else if(change === 'dec'){
+      //update name column
+      conn.query('UPDATE StatisticOnDay SET quantity = quantity + 1 WHERE week_id = ? and class_id = ? and day = ?', [quantity, week_id, class_id, day], (err, result) => {
+
+        if (!err) {
+          res.send("Changed item!")
+        } else { console.log(err); }
+
+      });
+      pool.releaseConnection(conn)
+    }
+  })
+
+});
+
 module.exports = router;
