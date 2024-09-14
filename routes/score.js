@@ -64,7 +64,7 @@ router.post('/score', (req, res) => {
 
     const params = req.body;
 
-    conn.query('INSERT INTO Score SET ?', params, (err, result) => {
+    conn.query('INSERT INTO Score (week_id, class_id, score) VALUES ?', [params.map(item => [item.week_id, item.class_id, item.score])], (err, result) => {
 
       if (!err) {
         res.send("Inserted item!")
