@@ -7,21 +7,10 @@ app.use(cors());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 
-// var pool = mysql.createPool({
-//   host: "103.57.222.81",
-//   user: "datthpt_db",
-//   password: "123456@",
-//   database: "datthpt_db",
-//   port: 3306,
-//   connectionLimit: 20,
-//   waitForConnections: true,
-//   queueLimit: 0
-// });
-
 app.listen(3000, () => console.log('Node server running @ http://localhost:3000'));
 
 app.get('/', (req, res) => {
-  res.send('NO Hello World 2.1')
+  res.send('NO Hello World 2.2')
 })
 
 //import Route
@@ -46,17 +35,4 @@ app.use(score);
 app.use(vipham);
 app.use(statisticOnDay);
 
-// const schedule = require('node-schedule')
 console.log(new Date("2023-07-30T00:00:00Z"))
-// const job = schedule.scheduleJob({ hour: 0, minute: 0, second: 0, dayOfWeek: 0 }, function() {
-//   console.log('Time for tea!');
-// });
-
-// async function getSth() {
-//   const response = await fetch('https://eti.vn/public/dat/');
-//   console.log(response)
-//   const jsonData = await response.json();
-//   console.log(jsonData)
-// }
-
-// getSth()

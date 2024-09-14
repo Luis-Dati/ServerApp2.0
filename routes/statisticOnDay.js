@@ -7,7 +7,7 @@ router.get('/statisticOnDay/:week_id', (req, res) => {
   pool.getConnection(function(err, conn) {
     if (err) {console.log(err)}
 
-    conn.query('Select * from StatisticOnDay', (err, result) => {
+    conn.query('Select * from StatisticOnDay where week_id = ?', [req.params.week_id], (err, result) => {
       if (err) {
         console.log(err)
         return
@@ -24,7 +24,7 @@ router.get('/statisticOnDay/:class_id', (req, res) => {
   pool.getConnection(function(err, conn) {
     if (err) {console.log(err)}
 
-    conn.query("Select * from StatisticOnDay where class_id != ?", [req.params.class_id], (err, result) => {
+    conn.query("Select * from StatisticOnDay where class_id = ?", [req.params.class_id], (err, result) => {
       if (err) {
         console.log(err)
         return
@@ -41,7 +41,7 @@ router.delete('/statisticOnDayAll', (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) { console.log(err) }
 
-    conn.query("DELETE from StatisticOnDay where week_id != 'wk00'", (err, result) => {
+    conn.query("DELETE from StatisticOnDay", (err, result) => {
 
       if (!err) {
         res.send("Deleted everything!")
@@ -57,7 +57,7 @@ router.delete('/statisticOnDay/:class_id', (req, res) => {
   pool.getConnection((err, conn) => {
     if (err) { console.log(err) }
 
-    conn.query("DELETE from StatisticOnDay where class_id != ?", [req.params.class_id], (err, result) => {
+    conn.query("DELETE from StatisticOnDay where class_id = ?", [req.params.class_id], (err, result) => {
 
       if (!err) {
         res.send("Deleted one class!")
