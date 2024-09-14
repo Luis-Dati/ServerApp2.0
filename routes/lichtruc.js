@@ -28,7 +28,7 @@ router.post('/lichtruc', (req, res) => {
 
     const params = req.body;
 
-    conn.query('INSERT INTO Lichtruc VALUES ?', [params.map(item => [item.week_id, item.class_id, item.class_passive])], (err, result) => {
+    conn.query('INSERT INTO Lichtruc VALUES ?', [params.map(item => [item.week_id, item.class_active, item.class_passive])], (err, result) => {
 
       if (!err) {
         res.send("Inserted item!")
