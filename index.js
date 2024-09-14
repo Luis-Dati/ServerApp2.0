@@ -21,7 +21,7 @@ app.use(bodyparser.urlencoded({ extended: false }));
 app.listen(3000, () => console.log('Node server running @ http://localhost:3000'));
 
 app.get('/', (req, res) => {
-  res.send('NO Hello World 2.0')
+  res.send('NO Hello World 2.1')
 })
 
 //import Route
