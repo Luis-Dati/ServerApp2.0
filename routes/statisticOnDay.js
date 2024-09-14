@@ -75,7 +75,7 @@ router.post('/statisticOnDay', (req, res) => {
 
     const params = req.body;
 
-    conn.query('INSERT INTO StatisticOnDay SET ?', params, (err, result) => {
+    conn.query('INSERT INTO StatisticOnDay VALUES ?', [params.map(item => [item.week_id, item.class_id, item.day, item.quantity])], (err, result) => {
 
       if (!err) {
         res.send("Inserted item!")
