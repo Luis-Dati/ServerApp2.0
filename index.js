@@ -2,16 +2,31 @@ var express = require('express');
 var cors = require('cors')
 var bodyparser = require('body-parser')
 var app = express();
- 
+
 app.use(cors());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 
 app.listen(3000, () => console.log('Node server running @ http://localhost:3000'));
-
 app.get('/', (req, res) => {
-  res.send('NO Hello World 2.2')
+  res.send('NO Hello World 2.5')
 })
+
+//check API
+const API_KEY = 'f994a7d6-a4c5-46bd-85c4-964f11d877a5';
+
+// Middleware kiểm tra API key
+function checkApiKey(req, res, next) {
+  const userApiKey = req.headers['api-key']; // Lấy API key từ phần header
+
+  // Kiểm tra API key
+  if (userApiKey && userApiKey === API_KEY) {
+    next(); // Tiếp tục xử lý nếu API key đúng
+  } else {
+    res.status(401).json({ message: 'Unauthorized: Invalid API key' });
+  }
+}
+app.use(checkApiKey);
 
 //import Route
 const users = require('./routes/users.js');
@@ -35,4 +50,4 @@ app.use(score);
 app.use(vipham);
 app.use(statisticOnDay);
 
-console.log(new Date("2023-07-30T00:00:00Z"))
+console.log(new Date().toString())
