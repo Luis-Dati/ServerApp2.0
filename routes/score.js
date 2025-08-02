@@ -21,6 +21,24 @@ router.get('/score/:week_id', (req, res) => {
   })
 });
 
+router.get('/scoreallweek', (req, res) => {
+  pool.getConnection(function(err, conn) {
+    if (err) {
+      console.log(err)
+    }
+
+    conn.query('select * from Score', (err, result) => {
+      if (err) {
+        console.log(err)
+        return
+      };
+      res.send(result)
+    });
+
+    pool.releaseConnection(conn);
+  })
+});
+
 //delete one accord class_id
 router.delete('/score/:class_id', (req, res) => {
   pool.getConnection((err, conn) => {
